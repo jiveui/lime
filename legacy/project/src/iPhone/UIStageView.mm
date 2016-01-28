@@ -3655,7 +3655,7 @@ namespace nme {}
    [win addSubview:c.view];
    self.window.rootViewController = c;
    nme_app_set_active(true);
-   application.idleTimerDisabled = YES;
+   application.idleTimerDisabled = NO;
    sOnFrame( new UIViewFrame() );
 }
 
