@@ -91,6 +91,8 @@ public class GameActivity extends Activity implements SensorEventListener {
 		mContext = this;
 		mHandler = new Handler ();
 		mAssets = getAssets ();
+
+        getWindow().setSoftInputMode(android.view.WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 		
 		Extension.assetManager = mAssets;
 		Extension.callbackHandler = mHandler;
