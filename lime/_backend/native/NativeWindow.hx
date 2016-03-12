@@ -80,6 +80,7 @@ class NativeWindow {
 				
 			}
 			
+			if (Reflect.hasField (parent.config, "allowHighDPI") && parent.config.allowHighDPI) flags |= cast WindowFlags.WINDOW_FLAG_ALLOW_HIGHDPI;
 			if (Reflect.hasField (parent.config, "borderless") && parent.config.borderless) flags |= cast WindowFlags.WINDOW_FLAG_BORDERLESS;
 			if (Reflect.hasField (parent.config, "depthBuffer") && parent.config.depthBuffer) flags |= cast WindowFlags.WINDOW_FLAG_DEPTH_BUFFER;
 			if (Reflect.hasField (parent.config, "fullscreen") && parent.config.fullscreen) flags |= cast WindowFlags.WINDOW_FLAG_FULLSCREEN;
@@ -249,6 +250,21 @@ class NativeWindow {
 	}
 	
 	
+	public function setMaximized (value:Bool):Bool {
+		
+		if (handle != null) {
+			
+			#if !macro
+			return lime_window_set_maximized (handle, value);
+			#end
+			
+		}
+		
+		return value;
+		
+	}
+	
+	
 	public function setMinimized (value:Bool):Bool {
 		
 		if (handle != null) {
@@ -316,6 +332,7 @@ class NativeWindow {
 	@:cffi private static function lime_window_set_enable_text_events (handle:Dynamic, enabled:Bool):Void;
 	@:cffi private static function lime_window_set_fullscreen (handle:Dynamic, fullscreen:Bool):Bool;
 	@:cffi private static function lime_window_set_icon (handle:Dynamic, buffer:Dynamic):Void;
+	@:cffi private static function lime_window_set_maximized (handle:Dynamic, maximized:Bool):Bool;
 	@:cffi private static function lime_window_set_minimized (handle:Dynamic, minimized:Bool):Bool;
 	@:cffi private static function lime_window_set_resizable (handle:Dynamic, resizable:Bool):Bool;
 	@:cffi private static function lime_window_set_title (handle:Dynamic, title:String):Dynamic;
@@ -338,5 +355,6 @@ class NativeWindow {
 	var WINDOW_FLAG_REQUIRE_SHADERS = 0x00000100;
 	var WINDOW_FLAG_DEPTH_BUFFER = 0x00000200;
 	var WINDOW_FLAG_STENCIL_BUFFER = 0x00000400;
+	var WINDOW_FLAG_ALLOW_HIGHDPI = 0x00000800;
 	
 }
