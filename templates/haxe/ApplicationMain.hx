@@ -88,6 +88,7 @@ class ApplicationMain {
 					parameters: "::parameters::",
 					resizable: ::resizable::,
 					stencilBuffer: ::stencilBuffer::,
+                    allowHighDPI: ::allowHighDPI::,
 					title: "::title::",
 					vsync: ::vsync::,
 					width: ::width::,
