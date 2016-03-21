@@ -3,6 +3,6 @@
 <plist version="1.0">
 <dict>
     <key>get-task-allow</key>
-    <true/>
+    ::if DEBUG ::<true/>::else::<false/>::end::
 </dict>
 </plist>
